@@ -7,3 +7,12 @@ export function purnEmptyProperties<T extends object>(
     [K in keyof T]?: NonNullable<T[K]>;
   };
 }
+
+export function extractId(url: string) {
+  return (
+    new URL(url).pathname
+      .split('/')
+      .reverse()
+      .find((path) => path !== '') ?? null
+  );
+}
