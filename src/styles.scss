@@ -1,1 +1,126 @@
-/* You can add global styles to this file, and also import other style files */
+/* นำเข้าฟอนต์ที่ดูสะอาดตาและเข้ากับสไตล์ Minimal (เช่น Poppins) */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+:root {
+  /* Color Palette */
+  --bg-color: #fcfaf8; /* สีพื้นหลัง: ครีมอ่อนๆ เกือบขาว */
+  --card-bg: #ffffff; /* สีการ์ด: ขาวล้วน */
+  --text-main: #4a4a4a; /* สีตัวอักษรหลัก: เทาเข้ม (ไม่ดำสนิทเพื่อให้ดูละมุน) */
+  --text-muted: #8b8b8b; /* สีตัวอักษรรอง: เทาอ่อน */
+  --border-color: #f0e9e1; /* สีเส้นขอบ: ครีมเข้มขึ้นมานิดหน่อย */
+
+  /* Pastel Accents */
+  --accent-pastel: #e6dcd3; /* สีพาสเทลสำหรับปุ่มหรือไฮไลท์ */
+  --hover-pastel: #f1ebe5; /* สีพาสเทลเมื่อเอาเมาส์ชี้ */
+  --pastel-blue: #dce5eb;
+  --pastel-green: #e0ece4;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* -----------------------------
+   Typography (หัวข้อต่างๆ)
+------------------------------ */
+h1,
+h2,
+h3,
+h4 {
+  color: var(--text-main);
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+p {
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+/* -----------------------------
+   Container สำหรับจัด Layout
+------------------------------ */
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+/* -----------------------------
+   Card Style (สำหรับการแสดงผล List ต่างๆ)
+------------------------------ */
+.minimal-card {
+  background-color: var(--card-bg);
+  border-radius: 16px;
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+  cursor: pointer;
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
+  }
+
+  h3 {
+    margin-top: 0;
+  }
+}
+
+/* -----------------------------
+   Button Style (ปุ่มกดพาสเทล)
+------------------------------ */
+button,
+.btn-pastel {
+  background-color: var(--accent-pastel);
+  color: var(--text-main);
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  display: inline-block;
+
+  &:hover {
+    background-color: var(--hover-pastel);
+  }
+
+  &.blue {
+    background-color: var(--pastel-blue);
+    &:hover {
+      filter: brightness(0.95);
+    }
+  }
+
+  &.green {
+    background-color: var(--pastel-green);
+    &:hover {
+      filter: brightness(0.95);
+    }
+  }
+}
+
+/* -----------------------------
+   Navigation หรือ Links
+------------------------------ */
+a {
+  color: var(--text-main);
+  text-decoration: none;
+  transition: color 0.2s;
+
+  &:hover {
+    color: #a89f91;
+  }
+}
