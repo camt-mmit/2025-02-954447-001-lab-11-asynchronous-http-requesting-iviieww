@@ -1,3 +1,4 @@
+import { isDevMode } from '@angular/core';
 import { OauthConfiguration } from './types/services';
 
 export const googleOauthConfig: OauthConfiguration = {
@@ -5,5 +6,7 @@ export const googleOauthConfig: OauthConfiguration = {
   secret: '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',
   tokenUrl: 'https://oauth2.googleapis.com/token',
   authorizationUrl: 'https://accounts.google.com/o/oauth2/v2/auth',
-  redirectUri: 'http://localhost:4200/google/authorization',
+  redirectUri: isDevMode()
+    ? 'http://localhost:4200/google/authorization'
+    : 'https://camt-mmit.github.io/.../google/authorization',
 };
