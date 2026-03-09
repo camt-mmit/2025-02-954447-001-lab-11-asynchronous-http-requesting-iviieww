@@ -1,9 +1,15 @@
 import { inject, Injectable, ResourceRef } from '@angular/core';
 import { OauthClient } from './oauth.client';
 import { HttpClient } from '@angular/common/http';
-import { CalendarEventsListRequest, CalendarEventsListResponse } from '../types/google/calendar';
+import {
+  CalendarEvent,
+  CalendarEventCreateParams,
+  CalendarEventsInsertRequestBody,
+  CalendarEventsListRequest,
+  CalendarEventsListResponse,
+} from '../types/google/calendar';
 import { rxResource } from '@angular/core/rxjs-interop';
-import { defer, switchMap } from 'rxjs';
+import { defer, firstValueFrom, switchMap } from 'rxjs';
 
 const baseUrl = 'https://www.googleapis.com/calendar/v3/calendars';
 
@@ -32,5 +38,23 @@ export class CalendarService {
         );
       },
     });
+  }
+
+  insertEvent(
+    params: CalendarEventCreateParams,
+    body: CalendarEventsInsertRequestBody,
+  ): Promise<CalendarEvent> {
+    const { calendarId, ...params } = options;
+
+    return firstValueFrom(
+      defer(async () => await this.client.getAuthorizationHeaders()).pipe(
+        switchMap((header) =>
+          this.http.post<CalendarEvent>(`${baseUrl}/${calendarId}/events`, {
+            headers: { ...headers },
+            params,
+          }),
+        ),
+      ),
+    );
   }
 }

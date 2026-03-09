@@ -105,7 +105,7 @@ export class OauthClient {
     localStorage.setItem(
       this.accessTokenDataKey,
       JSON.stringify({
-        expireAt: new Date().getTime() + (data.expiresIn + 1_000 - latency),
+        expireAt: new Date().getTime() + (data.expiresIn * 1_000 - latency),
         data,
       } satisfies StoredAccessTokenData),
     );

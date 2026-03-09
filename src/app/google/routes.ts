@@ -25,6 +25,7 @@ export default [
         path: '',
         component: GoogleRoot,
         children: [
+          { path: '', redirectTo: 'events', pathMatch: 'full' },
           {
             path: 'events',
             children: [

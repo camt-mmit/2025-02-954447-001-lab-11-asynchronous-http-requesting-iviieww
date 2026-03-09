@@ -1,1 +1,10 @@
-<p>events-insert-page works!</p>
+<form [formRoot]="form">
+  <app-events-field-tree [fieldTree]="fieldTree">
+    <legend>Insert Event</legend>
+
+    <div>
+      <button type="submit">Save</button>
+      <button type="button">Cancel</button>
+    </div>
+  </app-events-field-tree>
+</form>

@@ -1,4 +1,5 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input } from '@angular/core';
+import { CalendarEvent } from '../../types/google/calendar';
 
 @Component({
   selector: 'app-events-list',
@@ -8,5 +9,5 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class EventsList {
-
+  readonly items = input.required<readonly CalendarEvent[]>();
 }
