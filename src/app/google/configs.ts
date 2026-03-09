@@ -1,0 +1,9 @@
+import { OauthConfiguration } from './types/services';
+
+export const googleOauthConfig: OauthConfiguration = {
+  id: '209689905225-dj1bo29m0c7or5926cv4bb1nu5aru0cv.apps.googleusercontent.com',
+  secret: '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',
+  tokenUrl: 'https://oauth2.googleapis.com/token',
+  authorizationUrl: 'https://accounts.google.com/o/oauth2/v2/auth',
+  redirectUri: 'http://localhost:4200/google/authorization',
+};

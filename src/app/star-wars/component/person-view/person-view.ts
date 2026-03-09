@@ -11,19 +11,13 @@ import { films, Person, Planet } from '../../types';
 import { fetchResource } from '../../helpers';
 import { AsyncPipe, DatePipe } from '@angular/common';
 import { httpResource } from '@angular/common/http';
-import {
-  applyEach,
-  createManagedMetadataKey,
-  form,
-  metadata,
-  FormField,
-} from '@angular/forms/signals';
+import { applyEach, createManagedMetadataKey, form, metadata } from '@angular/forms/signals';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { ExtractIdPipe } from '../../pipes/extract-id-pipe-pipe';
 
 @Component({
   selector: 'app-person-view',
-  imports: [AsyncPipe, FormField, DatePipe, RouterLink, ExtractIdPipe],
+  imports: [AsyncPipe, DatePipe, RouterLink, ExtractIdPipe],
   templateUrl: './person-view.html',
   styleUrl: './person-view.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

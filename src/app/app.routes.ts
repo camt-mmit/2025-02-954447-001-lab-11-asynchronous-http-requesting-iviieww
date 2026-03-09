@@ -6,4 +6,8 @@ export const routes: Routes = [
     path: 'star-wars',
     loadChildren: () => import('./star-wars/routes'),
   },
+  {
+    path: 'google',
+    loadChildren: () => import('./google/routes'),
+  },
 ];

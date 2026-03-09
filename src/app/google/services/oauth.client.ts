@@ -196,6 +196,11 @@ export class OauthClient {
       expiresIn: res.expires_in,
     } satisfies AccessTokenData;
 
+    this.storeAccessTokenData(accessTokenData);
+
+    if (typeof res.refresh_token !== 'undefined') {
+      this.storeRefreshToken(res.refresh_token);
+    }
     return accessTokenData;
   }
 
@@ -218,7 +223,7 @@ export class OauthClient {
     formData.set('redirect_uri', this.config.redirectUri);
 
     await this.requestToken(formData);
-
+    this.removeState(stateCode);
     return state;
   }
 
@@ -278,6 +283,8 @@ export class OauthClient {
   async clearToken(): Promise<void> {
     this.removeAccessTokenData();
     this.removeRefreshToken();
+
+    await this.getAccessToken();
   }
 
   accessTokenDataResource(): ResourceRef<AccessTokenData | undefined> {

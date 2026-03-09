@@ -1,1 +1,19 @@
-<p>google-root works!</p>
+@if (accessTokenResource.hasValue()) {
+  <div>
+    <button type="button" (click)="logout()">Logout</button>
+  </div>
+  <nav>
+    <ul>
+      <li>
+        <a routerLink="events" routerLinkActive="is-active">Event</a>
+      </li>
+    </ul>
+  </nav>
+  <router-outlet></router-outlet>
+} @else if (accessTokenResource.error(); as error) {
+  <div>
+    <button type="button" (click)="login()">Login to google</button>
+  </div>
+} @else if (accessTokenResource.isLoading()) {
+  <p>Loading</p>
+}
