@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 import { FieldTree, FormField } from '@angular/forms/signals';
+import { CalendarEventInsertModel } from '../../pages/events-insert-page/events-insert-page';
 
 @Component({
   selector: 'app-events-field-tree',

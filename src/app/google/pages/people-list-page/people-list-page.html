@@ -1,0 +1,21 @@
+<div>
+  <a routerLink="insert">Create Contact</a>
+</div>
+
+<div>
+  <input type="text" [value]="q()" (input)="updateSearch($any($event).target.value)" placeholder="Search contacts..." />
+</div>
+
+@if (resource.hasValue()) {
+  @if (filteredItems(); as items) {
+    @if (items.length > 0) {
+      <app-people-list [items]="items"></app-people-list>
+    } @else {
+      <p>No contacts found.</p>
+    }
+  }
+} @else if (resource.error(); as error) {
+  <p>Error loading contacts.</p>
+} @else if (resource.isLoading()) {
+  <p>Loading contacts...</p>
+}

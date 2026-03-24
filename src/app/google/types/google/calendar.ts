@@ -450,3 +450,17 @@ export interface EventsResourceQueryOptions {
     readonly updatedMin?: datetime;
   };
 }
+
+export type CalendarEvent = EventResource;
+
+export interface CalendarEventsListRequest extends Omit<Exclude<EventsResourceQueryOptions['params'], undefined>, 'calendarId'> {
+  readonly calendarId: string;
+}
+
+export type CalendarEventsListResponse = EventsResource;
+
+export interface CalendarEventCreateParams extends Omit<Exclude<EventResourceInsertOptions['params'], undefined>, 'calendarId'> {
+  readonly calendarId: string;
+}
+
+export type CalendarEventsInsertRequestBody = EventResourceInsertOptions['body'];

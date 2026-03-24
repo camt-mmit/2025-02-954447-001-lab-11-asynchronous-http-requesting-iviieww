@@ -63,10 +63,10 @@ export class EventsListPage {
     await submit(this.form);
   }
 
-  protected loadMore(PageToken: string): void {
+  protected loadMore(pageToken: string): void {
     this.params.update((value) => ({
       ...value,
-      PageToken,
+      pageToken,
     }));
   }
 }

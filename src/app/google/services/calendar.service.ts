@@ -26,13 +26,14 @@ export class CalendarService {
   ): ResourceRef<CalendarEventsListResponse | undefined> {
     return rxResource({
       params,
-      stream: ({ params: options }) => {
-        const { calendarId, ...params } = options;
+      stream: (arg: any) => {
+        const options = arg.params;
+        const { calendarId, ...restParams } = options;
         return defer(async () => await this.client.getAuthorizationHeaders()).pipe(
           switchMap((headers) =>
             this.http.get<CalendarEventsListResponse>(`${baseUrl}/${calendarId}/events`, {
               headers: { ...headers },
-              params,
+              params: restParams as any,
             }),
           ),
         );
@@ -44,14 +45,14 @@ export class CalendarService {
     params: CalendarEventCreateParams,
     body: CalendarEventsInsertRequestBody,
   ): Promise<CalendarEvent> {
-    const { calendarId, ...params } = options;
+    const { calendarId, ...restParams } = params;
 
     return firstValueFrom(
       defer(async () => await this.client.getAuthorizationHeaders()).pipe(
-        switchMap((header) =>
-          this.http.post<CalendarEvent>(`${baseUrl}/${calendarId}/events`, {
+        switchMap((headers) =>
+          this.http.post<CalendarEvent>(`${baseUrl}/${calendarId}/events`, body, {
             headers: { ...headers },
-            params,
+            params: restParams as any,
           }),
         ),
       ),

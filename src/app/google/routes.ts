@@ -7,6 +7,9 @@ import { OauthClient } from './services/oauth.client';
 import { EventsListPage } from './pages/events-list-page/events-list-page';
 import { CalendarService } from './services/calendar.service';
 import { EventsInsertPage } from './pages/events-insert-page/events-insert-page';
+import { PeopleListPage } from './pages/people-list-page/people-list-page';
+import { PeopleInsertPage } from './pages/people-insert-page/people-insert-page';
+import { PeopleService } from './services/people.service';
 
 export default [
   {
@@ -18,6 +21,7 @@ export default [
       },
       OauthClient,
       CalendarService,
+      PeopleService,
     ], // module services will be added here
     children: [
       { path: 'authorization', component: AuthorizationPage },
@@ -31,6 +35,13 @@ export default [
             children: [
               { path: '', component: EventsListPage },
               { path: 'insert', component: EventsInsertPage },
+            ],
+          },
+          {
+            path: 'people',
+            children: [
+              { path: '', component: PeopleListPage },
+              { path: 'insert', component: PeopleInsertPage },
             ],
           },
         ],

@@ -1,0 +1,33 @@
+<h2>Create Contact</h2>
+
+<form (submit)="save($event)">
+  <div>
+    <label>
+      Given Name*
+      <input name="givenName" type="text" required />
+    </label>
+  </div>
+  <div>
+    <label>
+      Family Name
+      <input name="familyName" type="text" />
+    </label>
+  </div>
+  <div>
+    <label>
+      Email
+      <input name="email" type="email" />
+    </label>
+  </div>
+  <div>
+    <label>
+      Phone
+      <input name="phone" type="tel" />
+    </label>
+  </div>
+
+  <div class="actions">
+    <button type="submit">Save</button>
+    <button type="button" (click)="cancel()">Cancel</button>
+  </div>
+</form>
