@@ -3,7 +3,7 @@
   <div>
     <label>
       <b>Given Name*</b>
-      <input type="text" [formField]="field.givenName" required />
+      <input type="text" [formField]="field.givenName" />
     </label>
   </div>
   <div>
@@ -18,7 +18,7 @@
       <button type="button" (click)="addEmail.emit()">+ Email</button>
     </legend>
 
-    @for (item of field.emailAddresses().each(); track item) {
+    @for (item of field.emailAddresses; track item) {
       <div class="row">
         <label>
           <b>Type</b>
@@ -38,7 +38,7 @@
       <button type="button" (click)="addPhone.emit()">+ Phone Number</button>
     </legend>
 
-    @for (item of field.phoneNumbers().each(); track item) {
+    @for (item of field.phoneNumbers; track item) {
       <div class="row">
         <label>
           <b>Type</b>
