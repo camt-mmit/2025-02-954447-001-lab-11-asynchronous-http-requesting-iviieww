@@ -1,0 +1,118 @@
+<dl>
+  <dt>Name</dt>
+  <dd>{{ data().name }}</dd>
+
+  <dt>Name</dt>
+  <dd>{{ data().name }}</dd>
+
+  <dt>birth_year</dt>
+  <dd>{{ data().birth_year }}</dd>
+
+  <dt>eye_color</dt>
+  <dd>{{ data().eye_color }}</dd>
+
+  <dt>gender</dt>
+  <dd>{{ data().gender }}</dd>
+
+  <dt>hair_color</dt>
+  <dd>{{ data().hair_color }}</dd>
+
+  <dt>height</dt>
+  <dd>{{ data().height }}</dd>
+
+  <dt>mass</dt>
+  <dd>{{ data().mass }}</dd>
+
+  <dt>skin_color</dt>
+  <dd>{{ data().skin_color }}</dd>
+
+  <dt>homeworld (async)</dt>
+  <dd>
+    @if (data().homeworld !== null) {
+      @if (homeworld$() | async; as homeworld) {
+        <span>{{ homeworld.name }}</span>
+      } @else {
+        <p>Loading...</p>
+      }
+    }
+  </dd>
+
+  <dt>homeworld (resource for handle error)</dt>
+  <dd>
+    @if (homeworldResource.hasValue()) {
+      <span>{{ homeworldResource.value()?.name }}</span>
+    } @else if (homeworldResource.error(); as error) {
+      <span>{{ error.message }}</span>
+    } @else if (homeworldResource.isLoading()) {
+      <p>Loading...</p>
+    }
+  </dd>
+
+  <dt>homeworld (http resource)</dt>
+  <dd>
+    @if (homeworldHttpResource.hasValue()) {
+      <span>{{ homeworldHttpResource.value().name }}</span>
+    } @else if (homeworldHttpResource.error(); as error) {
+      <span>{{ error.message }}</span>
+    } @else if (homeworldHttpResource.isLoading()) {
+      <p>Loading...</p>
+    }
+  </dd>
+
+  <dt>films (async)</dt>
+  <dd>
+    <ul>
+      @for (item$ of asyncData().films$; track item$) {
+        <li>
+          @if (item$ | async; as item) {
+            <span>{{ item.title }}</span>
+          } @else {
+            <span>Loading...</span>
+          }
+        </li>
+      }
+    </ul>
+  </dd>
+
+  <dt>films (resource)</dt>
+  <dd>
+    @if (resourceData.films.hasValue()) {
+      <ul>
+        @for (item of resourceData.films.value(); track item) {
+          <li>
+            <a [routerLink]="['films', item.url | extractIdPipe]" [relativeTo]="moduleRoute()">{{
+              item.title
+            }}</a>
+          </li>
+        }
+      </ul>
+    } @else if (resourceData.films.error(); as error) {
+      <span>{{ error.message }}</span>
+    } @else if (resourceData.films.isLoading()) {
+      <p>Loading...</p>
+    }
+  </dd>
+
+  <dt>films (form)</dt>
+  <dd>
+    @for (fieldTree of form.films; track fieldTree) {
+      <li>
+        @let resource = fieldTree().metadata(filmResourceKey)!;
+
+        @if (resource.hasValue()) {
+          <span>{{ resource.value().title }}</span>
+        } @else if (resource.error(); as error) {
+          <span>{{ error.message }}</span>
+        } @else if (resource.isLoading()) {
+          <p>Loading...</p>
+        }
+      </li>
+    }
+  </dd>
+
+  <dt>create</dt>
+  <dd>{{ data().created | date }}</dd>
+
+  <dt>edited</dt>
+  <dd>{{ data().edited | date }}</dd>
+</dl>

@@ -1,0 +1,27 @@
+<div>
+  <a routerLink="Insert">Create Event</a>
+</div>
+
+<form [formRoot]="form">
+  <input type="text" [formField]="form.q" />
+  <button type="button" (click)="clearSearch()">X</button>
+</form>
+@if (items(); as items) {
+  @if (items.length > 0) {
+    <app-events-list [items]="items"></app-events-list>
+  } @else {
+    <p>Not found</p>
+  }
+}
+
+@if (resource.hasValue()) {
+  @if (resource.value().nextPageToken; as nextPageToken) {
+    <button type="button" (click)="loadMore(nextPageToken)">Load more events</button>
+  } @else {
+    <p>No more events</p>
+  }
+} @else if (resource.error(); as error) {
+  <p>{{ error.message }}</p>
+} @else if (resource.isLoading()) {
+  <p>Loading</p>
+}

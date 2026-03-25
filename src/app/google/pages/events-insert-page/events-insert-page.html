@@ -1,0 +1,10 @@
+<form [formRoot]="fieldTree">
+  <app-events-field-tree [fieldTree]="fieldTree">
+    <legend>Insert Event</legend>
+
+    <div>
+      <button type="submit">Save</button>
+      <button type="button" (click)="cancel()">Cancel</button>
+    </div>
+  </app-events-field-tree>
+</form>

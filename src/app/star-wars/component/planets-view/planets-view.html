@@ -1,0 +1,66 @@
+<dl>
+  <dt>name</dt>
+  <dd>{{ data().name }}</dd>
+
+  <dt>diameter</dt>
+  <dd>{{ data().diameter }}</dd>
+
+  <dt>rotation_period</dt>
+  <dd>{{ data().rotation_period }}</dd>
+
+  <dt>orbital_period</dt>
+  <dd>{{ data().orbital_period }}</dd>
+
+  <dt>gravity</dt>
+  <dd>{{ data().gravity }}</dd>
+
+  <dt>population</dt>
+  <dd>{{ data().population }}</dd>
+
+  <dt>climate</dt>
+  <dd>{{ data().climate }}</dd>
+
+  <dt>terrain</dt>
+  <dd>{{ data().terrain }}</dd>
+
+  <dt>surface_water</dt>
+  <dd>{{ data().surface_water }}</dd>
+
+  <dt>residents</dt>
+  <dd>
+    @if (personResourceData.residents.hasValue()) {
+      <ul>
+        @for (item of personResourceData.residents.value(); track item) {
+          <li>
+            <a [routerLink]="['people', item.url | extractIdPipe]" [relativeTo]="moduleRoute()">{{
+              item.name
+            }}</a>
+          </li>
+        }
+      </ul>
+    } @else if (personResourceData.residents.error(); as error) {
+      <span>{{ error.message }}</span>
+    } @else if (personResourceData.residents.isLoading()) {
+      <p>Loading...</p>
+    }
+  </dd>
+
+  <dt>films</dt>
+  <dd>
+    @if (filmResourceData.films.hasValue()) {
+      <ul>
+        @for (item of filmResourceData.films.value(); track item) {
+          <li>
+            <a [routerLink]="['films', item.url | extractIdPipe]" [relativeTo]="moduleRoute()">{{
+              item.title
+            }}</a>
+          </li>
+        }
+      </ul>
+    } @else if (filmResourceData.films.error(); as error) {
+      <span>{{ error.message }}</span>
+    } @else if (filmResourceData.films.isLoading()) {
+      <p>Loading...</p>
+    }
+  </dd>
+</dl>

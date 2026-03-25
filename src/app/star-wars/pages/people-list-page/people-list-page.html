@@ -1,0 +1,50 @@
+<header>
+  <form (submit)="$event.preventDefault()" (submit)="onSearch()">
+    <fieldset [disabled]="form().disabled()">
+      <!-- Form can not disabled on some browser -->
+      <input type="text" [formField]="form.search" placeholder="Search" />
+
+      <button type="button" (click)="clearSearch()">X</button>
+    </fieldset>
+  </form>
+
+  <nav>
+    @if (resource.hasValue()) {
+      <span>
+        <b>No. of Items:</b>
+        <span>{{ resource.value().count | number }}</span>
+      </span>
+    } @else if (resource.isLoading()) {
+      <p>Loading</p>
+    } @else if (resource.error(); as error) {
+      <p>Error!</p>
+    }
+    <span>
+      <b> Page : </b>
+      <span>{{ currentPage() }}</span>
+    </span>
+    <ul>
+      <li>
+        <a
+          [routerLink]="previousPage() ? [] : null"
+          [queryParams]="{ page: previousPage() }"
+          queryParamsHandling="merge"
+          >&lt;</a
+        >
+      </li>
+      <li>
+        <a
+          [routerLink]="nextPage() ? [] : null"
+          [queryParams]="{ page: nextPage() }"
+          queryParamsHandling="merge"
+          >&gt;</a
+        >
+      </li>
+    </ul>
+  </nav>
+</header>
+@if (resource.hasValue()) {
+  <app-people-list [data]="resource.value().results"></app-people-list>
+} @else if (resource.error(); as error) {
+  <p>{{ error.message }}</p>
+}

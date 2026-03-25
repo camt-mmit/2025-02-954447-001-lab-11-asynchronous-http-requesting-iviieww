@@ -1,0 +1,55 @@
+@let field = fieldTree();
+<fieldset [disabled]="field().disabled()">
+  <div>
+    <label>
+      <b>Given Name*</b>
+      <input type="text" [formField]="field.givenName" required />
+    </label>
+  </div>
+  <div>
+    <label>
+      <b>Family Name</b>
+      <input type="text" [formField]="field.familyName" />
+    </label>
+  </div>
+
+  <fieldset>
+    <legend>
+      <button type="button" (click)="addEmail.emit()">+ Email</button>
+    </legend>
+
+    @for (item of field.emailAddresses().each(); track item) {
+      <div class="row">
+        <label>
+          <b>Type</b>
+          <input type="text" [formField]="item.type" placeholder="e.g., home" />
+        </label>
+        <label>
+          <b>Email</b>
+          <input type="email" [formField]="item.value" />
+        </label>
+        <button type="button" class="remove" (click)="removeEmail.emit($index)">🗑</button>
+      </div>
+    }
+  </fieldset>
+
+  <fieldset>
+    <legend>
+      <button type="button" (click)="addPhone.emit()">+ Phone Number</button>
+    </legend>
+
+    @for (item of field.phoneNumbers().each(); track item) {
+      <div class="row">
+        <label>
+          <b>Type</b>
+          <input type="text" [formField]="item.type" placeholder="e.g., mobile" />
+        </label>
+        <label>
+          <b>Phone</b>
+          <input type="tel" [formField]="item.value" />
+        </label>
+        <button type="button" class="remove" (click)="removePhone.emit($index)">🗑</button>
+      </div>
+    }
+  </fieldset>
+</fieldset>

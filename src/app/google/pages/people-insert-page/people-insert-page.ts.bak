@@ -1,0 +1,33 @@
+import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
+import { PeopleService } from '../../services/people.service';
+import { CreateContactRequest } from '../../types/google/people';
+
+@Component({
+  selector: 'app-people-insert-page',
+  imports: [],
+  templateUrl: './people-insert-page.html',
+  styleUrl: './people-insert-page.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class PeopleInsertPage {
+  private readonly service = inject(PeopleService);
+
+  protected async save(event: Event): Promise<void> {
+    event.preventDefault();
+    const form = event.target as HTMLFormElement;
+    const formData = new FormData(form);
+    
+    const body: CreateContactRequest = {
+      names: [{ givenName: formData.get('givenName') as string, familyName: formData.get('familyName') as string }],
+      emailAddresses: [{ value: formData.get('email') as string }],
+      phoneNumbers: [{ value: formData.get('phone') as string }],
+    };
+    
+    await this.service.createContact(body);
+    history.back();
+  }
+
+  protected cancel(): void {
+    history.back();
+  }
+}

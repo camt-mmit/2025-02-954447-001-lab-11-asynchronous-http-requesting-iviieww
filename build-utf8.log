@@ -1,0 +1,170 @@
+﻿
+> week-11@0.0.0 build
+> ng build
+
+[33mΓ¥»[39m Building...
+[32mΓ£ö[39m Building...
+Application bundle generation failed. [3.990 seconds] - 2026-03-24T07:50:55.216Z
+
+node.exe : 
+[1m[33m[33mΓû▓ [43;
+33m[[43;30mWARNING[43
+;33m][0m [1mNG8113: 
+All imports are 
+unused[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+At line:1 char:1
++ & "C:\Program 
+Files\nodejs/node.exe" 
+"C:\Program 
+Files\nodejs/node_mo 
+...
++ ~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~
+~~
+    + CategoryInfo     
+         : NotSpecifi  
+  ed: ([1m[33m[33   
+ mΓ...r-compiler][    
+0m:String) [], Rem    
+oteException
+    + FullyQualifiedEr 
+   rorId : NativeComm  
+  andError
+ 
+
+    src/app/google/comp
+onents/events-field-tre
+e/events-field-tree.ts:
+7:2:
+[37m      7 Γöé   
+[32mimports[37m: 
+[FormField],
+        Γò╡   
+[32m~~~~~~~[0m
+
+
+[33mΓû▓ [43;33m[[43;
+30mWARNING[43;33m][0m
+ [1mNG8107: NG8107: 
+The left side of this 
+optional chain 
+operation does not 
+include 'null' or 
+'undefined' in its 
+type, therefore the 
+'?.' operator can be 
+replaced with the '.' 
+operator. Find more at 
+https://v21.angular.dev
+/extended-diagnostics/N
+G8107[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/star-wars/c
+omponent/person-view/pe
+rson-view.html:43:42:
+[37m      43 Γöé      
+ <span>{{ homeworldReso
+urce.value()?.[32mname
+[37m }}</span>
+         Γò╡           
+                       
+         [32m~~~~[0m
+
+  Warning occurs in 
+the template of 
+component PersonView.
+
+    src/app/star-wars/c
+omponent/person-view/pe
+rson-view.ts:21:15:
+[37m      21 Γöé   
+templateUrl: [32m'./pe
+rson-view.html'[37m,
+         Γò╡           
+     [32m~~~~~~~~~~~~~
+~~~~~~~[0m
+
+[39m[22m
+[1m[31m[31mX [41;31
+m[[41;97mERROR[41;31m
+][0m [1mNG5002: 
+Unexpected closing tag 
+"fieldset". It may 
+happen when the tag 
+has already been 
+closed by another tag. 
+For more info see https
+://www.w3.org/TR/html5/
+syntax.html#closing-ele
+ments-that-have-implied
+-end-tags[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/google/comp
+onents/events-field-tre
+e/events-field-tree.htm
+l:54:0:
+[37m      54 Γöé 
+[32m</fieldset>[37m
+         Γò╡ 
+[32m~~~~~~~~~~~[0m
+
+  Error occurs in the 
+template of component 
+EventsFieldTree.
+
+    src/app/google/comp
+onents/events-field-tre
+e/events-field-tree.ts:
+8:15:
+[37m      8 Γöé   
+templateUrl: [32m'./ev
+ents-field-tree.html'[
+37m,
+        Γò╡            
+    [32m~~~~~~~~~~~~~~
+~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97
+mERROR[41;31m][0m 
+[1mTS2339: Property 
+'form' does not exist 
+on type 'EventsInsertPa
+ge'.[0m 
+[1m[35m[plugin 
+angular-compiler][0m
+
+    src/app/google/page
+s/events-insert-page/ev
+ents-insert-page.html:1
+:18:
+[37m      1 Γöé <form 
+[formRoot]="[32mform[
+37m">
+        Γò╡            
+       [32m~~~~[0m
+
+  Error occurs in the 
+template of component 
+EventsInsertPage.
+
+    src/app/google/page
+s/events-insert-page/ev
+ents-insert-page.ts:33:
+15:
+[37m      33 Γöé   
+templateUrl: [32m'./ev
+ents-insert-page.html'
+[37m,
+         Γò╡           
+     [32m~~~~~~~~~~~~~
+~~~~~~~~~~~~~~[0m
+
+[39m[22m

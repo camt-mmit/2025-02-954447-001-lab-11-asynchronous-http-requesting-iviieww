@@ -1,0 +1,9 @@
+<button type="button">Back</button>
+
+@if (dataResource.hasValue()) {
+  <app-planets-view [data]="dataResource.value()" [moduleRoute]="moduleRoute" />
+} @else if (dataResource.error(); as error) {
+  <p>{{ error.message }}</p>
+} @else if (dataResource.isLoading()) {
+  <p>Loading...</p>
+}

@@ -1,0 +1,11 @@
+@if (data().length > 0) {
+  <ul class="_data-list">
+    @for (item of data(); track item) {
+      <li>
+        <a [routerLink]="item.url | extractIdPipe">{{ item.name }}</a>
+      </li>
+    }
+  </ul>
+} @else {
+  <p class="_empty-message">Not Found!!</p>
+}

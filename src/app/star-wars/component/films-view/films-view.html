@@ -1,0 +1,57 @@
+<dl>
+  <dt>title</dt>
+  <dd>{{ data().title }}</dd>
+
+  <dt>episode_id</dt>
+  <dd>{{ data().episode_id }}</dd>
+
+  <dt>opening_crawl</dt>
+  <dd>{{ data().opening_crawl }}</dd>
+
+  <dt>director</dt>
+  <dd>{{ data().director }}</dd>
+
+  <dt>producer</dt>
+  <dd>{{ data().producer }}</dd>
+
+  <dt>release_date</dt>
+  <dd>{{ data().release_date }}</dd>
+
+  <dt>characters</dt>
+  <dd>
+    @if (personResourceData.characters.hasValue()) {
+      <ul>
+        @for (item of personResourceData.characters.value(); track item) {
+          <li>
+            <a [routerLink]="['people', item.url | extractIdPipe]" [relativeTo]="moduleRoute()">{{
+              item.name
+            }}</a>
+          </li>
+        }
+      </ul>
+    } @else if (personResourceData.characters.error(); as error) {
+      <span>{{ error.message }}</span>
+    } @else if (personResourceData.characters.isLoading()) {
+      <p>Loading...</p>
+    }
+  </dd>
+
+  <dt>planets</dt>
+  <dd>
+    @if (planetResourceData.planets.hasValue()) {
+      <ul>
+        @for (item of planetResourceData.planets.value(); track item) {
+          <li>
+            <a [routerLink]="['planets', item.url | extractIdPipe]" [relativeTo]="moduleRoute()">{{
+              item.name
+            }}</a>
+          </li>
+        }
+      </ul>
+    } @else if (planetResourceData.planets.error(); as error) {
+      <span>{{ error.message }}</span>
+    } @else if (planetResourceData.planets.isLoading()) {
+      <p>Loading...</p>
+    }
+  </dd>
+</dl>
